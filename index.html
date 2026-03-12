@@ -665,13 +665,6 @@
     to { opacity: 1; }
   }
 
-  /* Ensure animated elements always end visible */
-  .hero-tag, .hero-name, .hero-title, .hero-summary,
-  .hero-cta, .learning-badge, .hero-visual,
-  .stat, .hero-stats .stat {
-    animation-fill-mode: both !important;
-  }
-
   @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
@@ -919,11 +912,11 @@
     </div>
 
     <div class="contact-links reveal">
-      <a href="/cdn-cgi/l/email-protection#b8cbd9cad1d3d9ccd0d9d3cdca8a888981f8dfd5d9d1d496dbd7d5" class="contact-link">
+      <a href="mailto:sarikathakur2019@gmail.com" class="contact-link">
         <span class="contact-link-icon">✉</span>
         <div class="contact-link-content">
           <div class="contact-link-label">Email</div>
-          <div class="contact-link-value"><span class="__cf_email__" data-cfemail="d7a4b6a5bebcb6a3bfb6bca2a5e5e7e6ee97b0bab6bebbf9b4b8ba">[email&#160;protected]</span></div>
+          <div class="contact-link-value">sarikathakur2019@gmail.com</div>
         </div>
       </a>
       <a href="https://linkedin.com/in/sarika-thakur-427381239" target="_blank" class="contact-link">
@@ -950,20 +943,7 @@
   <span>Web & Automation Specialist · AI Developer</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Smooth scroll with nav offset
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        const navHeight = document.querySelector('nav').offsetHeight;
-        const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-    });
-  });
-
+<script>
   // Custom cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
@@ -1003,4 +983,14 @@
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach((entry, i) => {
-      if
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
